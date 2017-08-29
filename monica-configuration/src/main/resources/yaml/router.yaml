@@ -1,0 +1,8 @@
+rules: 
+     - !!monica.configuration.entity.YamlRule ["host=192.168.1.100,127.0.0.1 => host=192.168.1.101", 0 ] 
+   
+     - !!monica.configuration.entity.YamlRule ["host=192.168.1.100,127.0.0.1 =>", 1 ]
+     
+     - !!monica.configuration.entity.YamlRule ["host=192.168.1.100,127.0.0.1 => host= 192.168.1.* ", 2 ]
+     
+     - !!monica.configuration.entity.YamlRule ["host=192.168.1.100=> host != 192.168.1.101 ", 3 ]

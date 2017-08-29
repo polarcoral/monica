@@ -1,0 +1,7 @@
+provider: monica://127.0.0.1:2083    
+loadbalance: monica.cluster.loadbalance.impl.RandomLoadBalance
+servers:
+        - !!monica.configuration.entity.YamlRegistryServer [127.0.0.1,2181]
+
+
+  

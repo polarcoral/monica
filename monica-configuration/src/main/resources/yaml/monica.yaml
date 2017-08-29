@@ -1,0 +1,5 @@
+protocol: socket
+configCentral: zookeeper
+registry: zookeeper
+servers:
+        - !!monica.configuration.entity.YamlRegistryServer [127.0.0.1,2181]

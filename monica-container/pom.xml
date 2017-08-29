@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.polarcoral.monica</groupId>
+    <artifactId>monica</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>monica-container</artifactId>
+  <name>${project.artifactId}</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+     <javassist.version>3.18.2-GA</javassist.version>  
+     <slf4j-version>1.7.6</slf4j-version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+     <dependency>
+      <groupId>com.polarcoral.monica</groupId>
+      <artifactId>monica-framework</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+      <dependency>
+      <groupId>com.polarcoral.monica</groupId>
+      <artifactId>monica-registry</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+       <dependency>
+      <groupId>org.javassist</groupId>
+      <artifactId>javassist</artifactId>
+   </dependency>
+   
+   <dependency>
+    	<groupId>com.polarcoral.monica</groupId>
+    	<artifactId>monica-files-socket</artifactId>
+    	<version>${project.parent.version}</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.polarcoral.monica</groupId>
+    	<artifactId>monica-configuration</artifactId>
+    	<version>${project.parent.version}</version>
+    </dependency>
+    
+     <dependency>
+    	<groupId>com.polarcoral.monica</groupId>
+    	<artifactId>monica-service</artifactId>
+    	<version>${project.parent.version}</version>
+    </dependency>
+  </dependencies>
+</project>
