@@ -4,12 +4,11 @@ import java.util.List;
 
 import monica.cluster.LoadBalance;
 
-
 /**
  * 
  * @author lucy@polarcoral.com
  *
- * 2017-08-29
+ *         2017-08-29
  */
 public class RoundRobinLoadBalance implements LoadBalance {
 
@@ -19,6 +18,3 @@ public class RoundRobinLoadBalance implements LoadBalance {
 	}
 
 }
-
-
-

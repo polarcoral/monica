@@ -7,13 +7,13 @@ import monica.cluster.router.parse.object.Rule;
  * 
  * @author lucy@polarcoral.com
  *
- * 2017-08-29
+ *         2017-08-29
  */
-public class BlockedParser implements Parser{
-	private volatile boolean parseResult =false;
+public class BlockedParser implements Parser {
+	private volatile boolean parseResult = false;
 
-	public void doParse(Rule rule) {	
-		if(null != rule && null == rule.getDestination() && null != rule.getSource()){
+	public void doParse(Rule rule) {
+		if (null != rule && null == rule.getDestination() && null != rule.getSource()) {
 			parseResult = true;
 		}
 	}
@@ -21,7 +21,5 @@ public class BlockedParser implements Parser{
 	public boolean isExpected() {
 		return parseResult;
 	}
-
-	
 
 }

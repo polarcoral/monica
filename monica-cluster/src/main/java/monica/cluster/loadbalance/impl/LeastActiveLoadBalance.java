@@ -4,12 +4,11 @@ import java.util.List;
 
 import monica.cluster.LoadBalance;
 
-
 /**
  * 
  * @author lucy@polarcoral.com
  *
- * 2017-08-29
+ *         2017-08-29
  */
 public class LeastActiveLoadBalance implements LoadBalance {
 
@@ -17,7 +16,5 @@ public class LeastActiveLoadBalance implements LoadBalance {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	
 
 }

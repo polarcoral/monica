@@ -1,11 +1,10 @@
 package monica.registry.base.zookeeper;
 
-
 /**
  * 
  * @author lucy@polarcoral.com
  *
- * 2017-08-29
+ *         2017-08-29
  */
 public class ZookeeperPath {
 	public final String SERVER_PATH = "monica\\provider";

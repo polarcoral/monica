@@ -12,22 +12,21 @@ import monica.configuration.context.ConfigurationContext;
 import monica.registry.context.RegistryContext;
 import monica.registry.service.ZookeeperMonicaClient;
 
-
 /**
  * 
  * @author lucy@polarcoral.com
  *
- * 2017-08-29
+ *         2017-08-29
  */
 public class UpdateRulesMain {
-	private final CuratorFramework zkClient = (CuratorFramework)RegistryContext.clientCache.get("curatorClient");
-	private final String RULE_PATH="/routers";
+	private final CuratorFramework zkClient = (CuratorFramework) RegistryContext.clientCache.get("curatorClient");
+	private final String RULE_PATH = "/routers";
+
 	/**
-	 * The only  entrance for  update routing rules
-	 * step 1) delete all rule nodes from zk
-	 * step 2) create all rule nodes on zk 
+	 * The only entrance for update routing rules step 1) delete all rule nodes
+	 * from zk step 2) create all rule nodes on zk
 	 */
-	public static void main(String args[]){		
+	public static void main(String args[]) {
 		try {
 			ConfigurationContext.loadYamlClientConfig();
 			new ZookeeperMonicaClient().start();
@@ -39,11 +38,10 @@ public class UpdateRulesMain {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	
-	private void storeRules() throws Exception{		
+
+	private void storeRules() throws Exception {
 		List<String> rules = new ArrayList<String>();
 		try {
 			rules = ConfigurationContext.loadYamlRouterConfig();
@@ -54,18 +52,18 @@ public class UpdateRulesMain {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(null == zkClient.checkExists().forPath(RULE_PATH)){
+		if (null == zkClient.checkExists().forPath(RULE_PATH)) {
 			zkClient.create().forPath(RULE_PATH);
 		}
-		for(String rule: rules){
-			if(null == zkClient.checkExists().forPath(RULE_PATH+"/"+rule)){
-				zkClient.create().forPath(RULE_PATH+"/"+URLEncoder.encode(rule,"UTF-8"));
+		for (String rule : rules) {
+			if (null == zkClient.checkExists().forPath(RULE_PATH + "/" + rule)) {
+				zkClient.create().forPath(RULE_PATH + "/" + URLEncoder.encode(rule, "UTF-8"));
 			}
 		}
 	}
-	
-	private void deleteRules() throws Exception{
-		if(null != zkClient.getChildren().forPath(RULE_PATH)){
+
+	private void deleteRules() throws Exception {
+		if (null != zkClient.getChildren().forPath(RULE_PATH)) {
 			zkClient.delete().deletingChildrenIfNeeded().forPath(RULE_PATH);
 		}
 	}

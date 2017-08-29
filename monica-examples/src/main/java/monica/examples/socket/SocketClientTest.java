@@ -21,19 +21,18 @@ import monica.container.client.ClientContainer;
  * 
  * @author lucy@polarcoral.com
  *
- * 2017-08-29
+ *         2017-08-29
  */
 public class SocketClientTest {
-	
-	public static void main(String args[]){
-		 ClientContainer clientContainer = new ClientContainer();
-		 try{
-			 clientContainer.start();
-		 }catch(Exception e){
-			 e.printStackTrace();
-		 }
-		 
+
+	public static void main(String args[]) {
+		ClientContainer clientContainer = new ClientContainer();
+		try {
+			clientContainer.start();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
-   
-    
+
 }

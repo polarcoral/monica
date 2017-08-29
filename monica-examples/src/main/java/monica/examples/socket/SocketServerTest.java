@@ -21,16 +21,16 @@ import monica.container.server.ServerContainer;
  * 
  * @author lucy@polarcoral.com
  *
- * 2017-08-29
+ *         2017-08-29
  */
 public class SocketServerTest {
-		public static void main(String args[]){
-			ServerContainer container = new ServerContainer();
-			try{
-				container.start();
-			}catch(Exception e){
-				e.printStackTrace();
-			}
-			
+	public static void main(String args[]) {
+		ServerContainer container = new ServerContainer();
+		try {
+			container.start();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+
+	}
 }
