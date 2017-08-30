@@ -7,13 +7,8 @@
     <artifactId>monica</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>monica-container</artifactId>
+  <artifactId>monica-starter</artifactId>
   <name>${project.artifactId}</name>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-     <javassist.version>3.18.2-GA</javassist.version>  
-     <slf4j-version>1.7.6</slf4j-version>
-  </properties>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -34,7 +29,6 @@
       <groupId>org.javassist</groupId>
       <artifactId>javassist</artifactId>
    </dependency>
-   
    <dependency>
     	<groupId>com.polarcoral.monica</groupId>
     	<artifactId>monica-files-socket</artifactId>
@@ -48,7 +42,7 @@
     
      <dependency>
     	<groupId>com.polarcoral.monica</groupId>
-    	<artifactId>monica-service</artifactId>
+    	<artifactId>monica-coordinator</artifactId>
     	<version>${project.parent.version}</version>
     </dependency>
   </dependencies>

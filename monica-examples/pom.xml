@@ -34,7 +34,7 @@
     </dependency>
     <dependency>
     	<groupId>com.polarcoral.monica</groupId>
-    	<artifactId>monica-container</artifactId>
+    	<artifactId>monica-starter</artifactId>
     	<version>${project.parent.version}</version>
     </dependency>
     <dependency>

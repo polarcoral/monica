@@ -22,13 +22,11 @@
 		<module>monica-framework</module>
 		<module>monica-registry</module>
 		<module>monica-cluster</module>
-		<module>monica-configuration</module>
-		<module>monica-container</module>
-		<module>monica-service</module>
-		
-		
+		<module>monica-configuration</module>		
 		<module>monica-files</module>
 		<module>monica-examples</module>
+		<module>monica-starter</module>
+		<module>monica-coordinator</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
