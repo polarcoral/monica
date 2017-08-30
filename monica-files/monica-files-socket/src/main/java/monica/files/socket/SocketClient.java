@@ -23,9 +23,9 @@ import monica.framework.Client;
 public class SocketClient implements Client {
 	public final static String NAME = "socket";
 
-	final boolean SSL = System.getProperty("ssl") != null;
-	final String HOST = System.getProperty("host", "127.0.0.1");
-	final int PORT = Integer.parseInt(System.getProperty("port", SSL ? "8992" : "8023"));
+	static final boolean SSL = System.getProperty("ssl") != null;
+	static final String HOST = System.getProperty("host", "127.0.0.1");
+	static final int PORT = Integer.parseInt(System.getProperty("port", SSL ? "8992" : "8023"));
 
 	public void start(String ip, int port) throws Exception {
 		// Configure SSL.

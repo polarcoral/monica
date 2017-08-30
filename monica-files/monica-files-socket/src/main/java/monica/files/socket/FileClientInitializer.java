@@ -37,7 +37,7 @@ public class FileClientInitializer extends ChannelInitializer<SocketChannel> {
 		ChannelPipeline pipeline = ch.pipeline();
 
 		if (sslCtx != null) {
-			pipeline.addLast(sslCtx.newHandler(ch.alloc(), FileClient.HOST, FileClient.PORT));
+			pipeline.addLast(sslCtx.newHandler(ch.alloc(), SocketClient.HOST, SocketClient.PORT));
 		}
 
 		// Add the text line codec combination first,
