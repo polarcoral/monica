@@ -15,7 +15,7 @@
  */
 package monica.examples.socket;
 
-import monica.container.server.ServerContainer;
+import monica.starter.server.ServerContainer;
 
 /**
  * 
