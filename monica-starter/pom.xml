@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.polarcoral.monica</groupId>
     <artifactId>monica</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1-alpha</version>
   </parent>
   <artifactId>monica-starter</artifactId>
   <name>${project.artifactId}</name>
@@ -46,4 +46,5 @@
     	<version>${project.parent.version}</version>
     </dependency>
   </dependencies>
+  <description>Starter for server and client with basic artifacts of monica</description>
 </project>

@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.polarcoral.monica</groupId>
     <artifactId>monica</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1-alpha</version>
   </parent>
   <artifactId>monica-coordinator</artifactId>  
   <name>${project.artifactId}</name>
@@ -31,4 +31,5 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <description>Coordianator  for all monica artifacts.  </description>
 </project>

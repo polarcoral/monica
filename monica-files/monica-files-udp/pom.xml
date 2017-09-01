@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.polarcoral.monica</groupId>
     <artifactId>monica-files</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1-alpha</version>
   </parent>
   <artifactId>monica-files-udp</artifactId>
   <name>${project.artifactId}</name>
@@ -17,4 +17,5 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <description>Udp file transport protocol</description>
 </project>

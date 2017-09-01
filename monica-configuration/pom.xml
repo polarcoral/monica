@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.polarcoral.monica</groupId>
     <artifactId>monica</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1-alpha</version>
   </parent>
   <artifactId>monica-configuration</artifactId>
   <name>${project.artifactId}</name>
@@ -41,4 +41,5 @@
          <artifactId>curator-framework</artifactId>
      </dependency>
   </dependencies>
+  <description>Configuration based on properties and yaml for all artifacts of monica</description>
 </project>
