@@ -15,7 +15,7 @@
  */
 package monica.examples.socket;
 
-import monica.starter.server.ServerContainer;
+import monica.starter.server.ServerSstarter;
 
 /**
  * 
@@ -25,7 +25,7 @@ import monica.starter.server.ServerContainer;
  */
 public class SocketServerTest {
 	public static void main(String args[]) {
-		ServerContainer container = new ServerContainer();
+		ServerSstarter container = new ServerSstarter();
 		try {
 			container.start();
 		} catch (Exception e) {

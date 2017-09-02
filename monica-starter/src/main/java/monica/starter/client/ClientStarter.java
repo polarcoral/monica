@@ -18,7 +18,7 @@ import monica.registry.service.ZookeeperMonicaClient;
  *
  *         2017-08-29
  */
-public class ClientContainer {
+public class ClientStarter {
 	private final Logger log = LoggerFactory.getLogger(getClass());
 	private final String SERVER_IP_CACHE = "server_ip";
 	private final String SERVER_PORT_CACHE = "server_port";
@@ -46,7 +46,7 @@ public class ClientContainer {
 	}
 
 	public static void main(String args[]) {
-		ClientContainer container = new ClientContainer();
+		ClientStarter container = new ClientStarter();
 		try {
 			container.start();
 		} catch (Exception e) {

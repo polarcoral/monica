@@ -23,9 +23,9 @@ import monica.registry.service.ZookeeperMonicaClient;
  *
  *         2017-08-29
  */
-public class ServerContainer {
+public class ServerSstarter {
 
-	private final Logger log = LoggerFactory.getLogger(ServerContainer.class);
+	private final Logger log = LoggerFactory.getLogger(ServerSstarter.class);
 	private final String protocolPrefix = "monica.files";
 
 	public void start() throws Exception {
@@ -73,7 +73,7 @@ public class ServerContainer {
 
 	public static void main(String args[]) {
 		try {
-			ServerContainer container = new ServerContainer();
+			ServerSstarter container = new ServerSstarter();
 			container.start();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -15,7 +15,7 @@
  */
 package monica.examples.socket;
 
-import monica.starter.client.ClientContainer;
+import monica.starter.client.ClientStarter;
 
 /**
  * 
@@ -26,7 +26,7 @@ import monica.starter.client.ClientContainer;
 public class SocketClientTest {
 
 	public static void main(String args[]) {
-		ClientContainer clientContainer = new ClientContainer();
+		ClientStarter clientContainer = new ClientStarter();
 		try {
 			clientContainer.start();
 		} catch (Exception e) {
