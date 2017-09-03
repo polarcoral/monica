@@ -12,3 +12,11 @@ Monica is a distributed file transport system. It provides the following feature
         <version>0.0.1-alpha</version>
       </dependency>
 ## Modules
+*  monica-framework
+*  monica-configuration
+*  monica-registry
+*  monica-cluster
+*  monica-coordinator
+*  monica-files
+*  monica-starter
+*  monica-examples
