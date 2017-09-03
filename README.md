@@ -21,7 +21,7 @@ Monica is a distributed file transport system. It provides the following feature
 *  monica-starter
 *  monica-examples
 ## Documentation
-   [Monica iki](https://github.com/polarcoral/monica/wiki)
+   [Monica wiki](https://github.com/polarcoral/monica/wiki)
 ## License
   Copyright 2017 The Monica Project
  
