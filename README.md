@@ -1,6 +1,5 @@
 # monica
   Monica is a distributed file transport system. It provides the following features:
-  
 * Cluster   
 * Router   
 * Registration and Discovery
