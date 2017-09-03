@@ -4,7 +4,7 @@
 * Router   
 * Registration and Discovery
 
-   To get monica libraries, go to [maven centre](http://search.maven.org/#search%7Cga%7C1%7Cmonica). Here is an example to add dependency in Maven:
+   To get monica binaries, go to [maven centre](http://search.maven.org/#search%7Cga%7C1%7Cmonica). Here is an example to add dependency in Maven:
   
       <dependency>
         <groupId>com.polarcoral.monica</groupId>
