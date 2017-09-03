@@ -1,4 +1,4 @@
-## Monica
+# Monica
 Monica is a distributed file transport system. It provides the following features:
 *   Load balancing
 *   Routing according to IP 
