@@ -243,7 +243,9 @@
 				<version>${coveralls-maven-plugin.version}</version>
 			</plugin>
 
-			<!-- <plugin>
+			<!-- 
+			
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-gpg-plugin</artifactId>
 				<version>${maven-gpg-plugin.version}</version>
@@ -256,7 +258,9 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin> -->
+			</plugin> 
+			
+			-->
 		</plugins>
 	</build>
 
@@ -361,7 +365,8 @@
 	</developers>
 	
 	
-	<!--  <distributionManagement>
+	<!-- 
+	 <distributionManagement>
         <snapshotRepository>
             <id>sonatype-nexus-snapshots</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
@@ -370,5 +375,6 @@
             <id>sonatype-nexus-releases</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
-    </distributionManagement> -->
+    </distributionManagement> 
+    -->
 </project>
