@@ -15,4 +15,10 @@ public class WebsocketClient implements Client {
 
 	}
 
+	@Override
+	public boolean isStarted() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

@@ -8,5 +8,5 @@ package monica.framework;
  */
 public interface Client {
 	public void start(String ip, int port) throws Exception;
-
+    public  boolean isStarted();
 }

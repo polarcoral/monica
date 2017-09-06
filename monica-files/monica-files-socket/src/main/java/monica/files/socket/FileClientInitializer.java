@@ -8,6 +8,7 @@ import io.netty.handler.codec.Delimiters;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.ssl.SslContext;
+import monica.registry.context.RegistryContext;
 
 /**
  * 
@@ -16,6 +17,10 @@ import io.netty.handler.ssl.SslContext;
  *         2017-08-29
  */
 public class FileClientInitializer extends ChannelInitializer<SocketChannel> {
+	private final String SERVER_IP_CACHE = "server_ip";
+	private final String SERVER_PORT_CACHE = "server_port";
+	private String ip = (String) RegistryContext.clientCache.get(SERVER_IP_CACHE);
+	private int port = Integer.valueOf((String) RegistryContext.clientCache.get(SERVER_PORT_CACHE));
 
 	// private static final ObjectDecoder DECODER = new
 	// ObjectDecoder(1024*1024,ClassResolvers.weakCachingResolver());
@@ -37,7 +42,7 @@ public class FileClientInitializer extends ChannelInitializer<SocketChannel> {
 		ChannelPipeline pipeline = ch.pipeline();
 
 		if (sslCtx != null) {
-			pipeline.addLast(sslCtx.newHandler(ch.alloc(), SocketClient.HOST, SocketClient.PORT));
+			pipeline.addLast(sslCtx.newHandler(ch.alloc(), ip, port));
 		}
 
 		// Add the text line codec combination first,

@@ -22,10 +22,8 @@ import monica.framework.Client;
  */
 public class SocketClient implements Client {
 	public final static String NAME = "socket";
-
+	private volatile boolean isStarted = false;
 	static final boolean SSL = System.getProperty("ssl") != null;
-	static final String HOST = System.getProperty("host", "127.0.0.1");
-	static final int PORT = Integer.parseInt(System.getProperty("port", SSL ? "8992" : "8023"));
 
 	public void start(String ip, int port) throws Exception {
 		// Configure SSL.
@@ -42,7 +40,11 @@ public class SocketClient implements Client {
 			b.group(group).channel(NioSocketChannel.class).handler(new FileClientInitializer(sslCtx));
 
 			// Start the connection attempt.
-			Channel ch = b.connect(HOST, PORT).sync().channel();
+			Channel ch = b.connect(ip, port).sync().channel();
+			
+			if(ch.isOpen()){
+				setStarted(true);
+			}
 
 			// Read commands from the stdin.
 			ChannelFuture lastWriteFuture = null;
@@ -56,7 +58,7 @@ public class SocketClient implements Client {
 				length = raf.length();
 				System.out.println("file.length--------  " + file.length());
 				lastWriteFuture = ch.writeAndFlush("rrrrrrrrrrrrrr");
-
+                
 				// ch.writeAndFlush(new Student());
 			} catch (Exception e) {
 				ch.writeAndFlush("ERR: " + e.getClass().getSimpleName() + ": " + e.getMessage() + '\n');
@@ -66,16 +68,25 @@ public class SocketClient implements Client {
 					raf.close();
 				}
 			}
-
+			
 			// Wait until all messages are flushed before closing the channel.
 			if (lastWriteFuture != null) {
 				lastWriteFuture.sync();
+				
 			}
 
 			Thread.sleep(10000000);
 		} finally {
 			group.shutdownGracefully();
 		}
+	}
+	
+	public void setStarted(boolean isStarted) {
+		this.isStarted = isStarted;
+	}
+
+	public boolean isStarted() {
+		return this.isStarted;
 	}
 
 }
