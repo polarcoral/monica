@@ -3,3 +3,4 @@ configCentral: zookeeper
 registry: zookeeper
 servers:
         - !!monica.configuration.entity.YamlRegistryServer [127.0.0.1,2181]
+storage: monica.storage.filesystem.DiskStorageFacotry

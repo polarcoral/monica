@@ -1,6 +1,5 @@
 package monica.starter.client;
 
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 
 import org.slf4j.Logger;
@@ -32,13 +31,10 @@ public class ClientStarter {
 		new ServiceBuilder().servicesInit().route().loadbalance().build();
 		String ip = (String) RegistryContext.clientCache.get(SERVER_IP_CACHE);
 		int port = Integer.valueOf((String) RegistryContext.clientCache.get(SERVER_PORT_CACHE));
-		// signal.countDown();
-		Client client = ClientFactory.newFactory().getConsumerClient();
-		// client.start(ip, port);
+		Client client = ClientFactory.newFactory().getConsumerClient();	
 		Executors.newSingleThreadExecutor().execute(new NettyRunnable(client, ip, port));
 		for (;;) {
 			if (client.isStarted()) {
-				System.out.println("client-------isstarted: " + client.isStarted());
 				new RegistryCentre().setUri(createUri()).setType(RegistryType.CLIENT).start();
 				if (RegistryCentre.registryFinished()) {
 					log.info("monica client start successfully!");

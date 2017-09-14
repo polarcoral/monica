@@ -81,7 +81,7 @@ public class ZookeeperRegistration implements Registration {
 
 	public List<String> batchCreate() {
 		List<String> batchUri = new ArrayList();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 2; i++) {
 			String b = "monica://192.168.1.10";
 			String e = ":8023";
 			try {

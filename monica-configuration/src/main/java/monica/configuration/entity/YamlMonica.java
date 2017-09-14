@@ -13,6 +13,8 @@ public class YamlMonica {
 	private String configCentral;
 	private String registry;
 	private List<YamlRegistryServer> servers;
+	private String storage;
+	
 
 	public String getProtocol() {
 		return protocol;
@@ -44,6 +46,15 @@ public class YamlMonica {
 
 	public void setServers(List<YamlRegistryServer> servers) {
 		this.servers = servers;
+	}
+	
+
+	public String getStorage() {
+		return storage;
+	}
+
+	public void setStorage(String storage) {
+		this.storage = storage;
 	}
 
 	/**

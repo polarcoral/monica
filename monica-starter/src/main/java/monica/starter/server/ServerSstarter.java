@@ -47,7 +47,7 @@ public class ServerSstarter {
 		Executors.newSingleThreadExecutor().execute(new NettyRunnable(zkSignal, server));
 		Executors.newSingleThreadExecutor().execute(new ZookeeperRunnable(zkSignal));
 		for (;;) {
-			// the Server isStrated filed is visible to multi-thread by volatile
+			// the Server isStrated field is visible to multi-thread by volatile
 			// modifier
 			if (server.isStarted()) {
 				nettySignal.countDown();

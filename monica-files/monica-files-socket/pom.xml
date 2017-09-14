@@ -26,11 +26,17 @@
 	    <artifactId>monica-framework</artifactId>
 	    <version>${project.parent.version}</version>
 	</dependency>
+	<dependency>
+	    <groupId>com.polarcoral.monica</groupId>
+	    <artifactId>monica-configuration</artifactId>
+	    <version>${project.parent.version}</version>
+	</dependency>
 	 <dependency>
 	    <groupId>com.polarcoral.monica</groupId>
 	    <artifactId>monica-registry</artifactId>
 	    <version>${project.parent.version}</version>
 	</dependency>
+	
 	<!--  <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>

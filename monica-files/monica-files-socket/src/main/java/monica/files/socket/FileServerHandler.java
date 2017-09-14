@@ -18,12 +18,11 @@ package monica.files.socket;
 
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.DefaultFileRegion;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.handler.ssl.SslHandler;
-import io.netty.handler.stream.ChunkedFile;
-
-import java.io.RandomAccessFile;
+import monica.configuration.context.ConfigurationContext;
+import monica.framework.Storage;
+import monica.framework.storage.AbstractStorageFactory;
+import monica.framework.transport.TransportFile;
 
 /**
  * 
@@ -31,38 +30,16 @@ import java.io.RandomAccessFile;
  *
  *         2017-08-29
  */
-public class FileServerHandler extends SimpleChannelInboundHandler<String> {
+public class FileServerHandler extends SimpleChannelInboundHandler<Object> {
+	private String STORAGE_CONFIG_KEY = "storage";
+  
 
 	@Override
-	public void channelActive(ChannelHandlerContext ctx) {
-		ctx.writeAndFlush("HELLO: Type the path of the file to retrieve.\n");
-	}
-
-	@Override
-	public void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-		RandomAccessFile raf = null;
-		long length = -1;
-		try {
-			raf = new RandomAccessFile(msg, "r");
-			length = raf.length();
-		} catch (Exception e) {
-			ctx.writeAndFlush("ERR: " + e.getClass().getSimpleName() + ": " + e.getMessage() + '\n');
-			return;
-		} finally {
-			if (length < 0 && raf != null) {
-				raf.close();
-			}
-		}
-
-		ctx.write("OK: " + raf.length() + '\n');
-		if (ctx.pipeline().get(SslHandler.class) == null) {
-			// SSL not enabled - can use zero-copy file transfer.
-			ctx.write(new DefaultFileRegion(raf.getChannel(), 0, length));
-		} else {
-			// SSL enabled - cannot use zero-copy file transfer.
-			ctx.write(new ChunkedFile(raf));
-		}
-		ctx.writeAndFlush("\n");
+	public void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+		  String storageFactoryName = String.valueOf(ConfigurationContext.propMap.get(STORAGE_CONFIG_KEY));
+		  Object o = this.getClass().getClassLoader().loadClass(storageFactoryName).newInstance();
+		  Storage storage = ((AbstractStorageFactory)o).newStorageInstance();
+		  storage.storage((TransportFile)msg);
 	}
 
 	@Override

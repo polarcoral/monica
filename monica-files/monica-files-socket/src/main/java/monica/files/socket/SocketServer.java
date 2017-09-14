@@ -59,18 +59,7 @@ public class SocketServer implements Server {
 		try {
 			ServerBootstrap b = new ServerBootstrap();
 			b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).option(ChannelOption.SO_BACKLOG, 100)
-					.handler(new LoggingHandler(LogLevel.INFO)).childHandler(new ChannelInitializer<SocketChannel>() {
-						@Override
-						public void initChannel(SocketChannel ch) throws Exception {
-							ChannelPipeline p = ch.pipeline();
-							if (sslCtx != null) {
-								p.addLast(sslCtx.newHandler(ch.alloc()));
-							}
-							p.addLast(new StringEncoder(CharsetUtil.UTF_8), new LineBasedFrameDecoder(8192),
-									new StringDecoder(CharsetUtil.UTF_8), new ChunkedWriteHandler(),
-									new FileServerHandler());
-						}
-					});
+					.handler(new LoggingHandler(LogLevel.INFO)).childHandler(new FileServerHandlerInitializer());
 
 			// Start the server.
 			ChannelFuture f = b.bind(getHostAddress(), PORT).sync();

@@ -35,6 +35,7 @@ public class ConfigurationContext {
 		YamlMonica yamlMonica = yaml.loadAs(getClassLoader().getResource(yamlBaseFilePath+File.separator+"monica.yaml").openStream(), YamlMonica.class);
 		propMap.putIfAbsent("yamlMonica", yamlMonica);
 		propMap.putIfAbsent("serverString", yamlMonica.toServerString());
+		propMap.putIfAbsent("storage", yamlMonica.getStorage());
 	}
 	
 	
