@@ -36,7 +36,11 @@
 	    <artifactId>monica-registry</artifactId>
 	    <version>${project.parent.version}</version>
 	</dependency>
-	
+	 <dependency>
+	    <groupId>com.polarcoral.monica</groupId>
+	    <artifactId>monica-storage-filesystem</artifactId>
+	    <version>${project.parent.version}</version>
+	</dependency>
 	<!--  <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>

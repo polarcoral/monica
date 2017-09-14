@@ -36,7 +36,7 @@ public class FileServerHandler extends SimpleChannelInboundHandler<Object> {
 
 	@Override
 	public void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
-		  String storageFactoryName = String.valueOf(ConfigurationContext.propMap.get(STORAGE_CONFIG_KEY));
+		  String storageFactoryName = String.valueOf(ConfigurationContext.propMap.get(STORAGE_CONFIG_KEY));		   
 		  Object o = this.getClass().getClassLoader().loadClass(storageFactoryName).newInstance();
 		  Storage storage = ((AbstractStorageFactory)o).newStorageInstance();
 		  storage.storage((TransportFile)msg);
