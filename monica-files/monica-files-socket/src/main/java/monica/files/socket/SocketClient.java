@@ -1,7 +1,9 @@
 package monica.files.socket;
 
 import java.io.File;
-import java.io.RandomAccessFile;
+import java.io.FileInputStream;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -13,6 +15,7 @@ import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 import monica.framework.Client;
+import monica.framework.transport.TransportFile;
 
 /**
  * 
@@ -38,49 +41,24 @@ public class SocketClient implements Client {
 		try {
 			Bootstrap b = new Bootstrap();
 			b.group(group).channel(NioSocketChannel.class).handler(new FileClientInitializer(sslCtx));
-
-			// Start the connection attempt.
 			Channel ch = b.connect(ip, port).sync().channel();
-			
-			if(ch.isOpen()){
-				setStarted(true);
-			}
+			File newFile = new File("f:\\019.mp3");
+			FileChannel channel = (new FileInputStream(newFile)).getChannel();
+			ByteBuffer byteBuffer = ByteBuffer.allocate((int) channel.size());
+			while (channel.read(byteBuffer) > 0);
+			TransportFile transportFile = new TransportFile();
+			transportFile.setContent(byteBuffer.array());
+			transportFile.setFileName(newFile.getName());
+			ChannelFuture f = ch.writeAndFlush(transportFile);
+			// Wait until the connection is closed.
+			f.sync();
 
-			// Read commands from the stdin.
-			ChannelFuture lastWriteFuture = null;
-
-			File file = new File("F:\\aa.txt");
-			RandomAccessFile raf = null;
-
-			long length = -1;
-			try {
-				raf = new RandomAccessFile(file, "r");
-				length = raf.length();
-				System.out.println("file.length--------  " + file.length());
-				lastWriteFuture = ch.writeAndFlush("rrrrrrrrrrrrrr");
-                
-				// ch.writeAndFlush(new Student());
-			} catch (Exception e) {
-				ch.writeAndFlush("ERR: " + e.getClass().getSimpleName() + ": " + e.getMessage() + '\n');
-				return;
-			} finally {
-				if (length < 0 && raf != null) {
-					raf.close();
-				}
-			}
-			
-			// Wait until all messages are flushed before closing the channel.
-			if (lastWriteFuture != null) {
-				lastWriteFuture.sync();
-				
-			}
-
-			Thread.sleep(10000000);
+			//Thread.sleep(10000000);
 		} finally {
 			group.shutdownGracefully();
 		}
 	}
-	
+
 	public void setStarted(boolean isStarted) {
 		this.isStarted = isStarted;
 	}

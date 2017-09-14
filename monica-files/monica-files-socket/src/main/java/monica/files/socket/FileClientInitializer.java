@@ -3,10 +3,9 @@ package monica.files.socket;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.Delimiters;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.codec.serialization.ClassResolvers;
+import io.netty.handler.codec.serialization.ObjectDecoder;
+import io.netty.handler.codec.serialization.ObjectEncoder;
 import io.netty.handler.ssl.SslContext;
 import monica.registry.context.RegistryContext;
 
@@ -22,14 +21,11 @@ public class FileClientInitializer extends ChannelInitializer<SocketChannel> {
 	private String ip = (String) RegistryContext.clientCache.get(SERVER_IP_CACHE);
 	private int port = Integer.valueOf((String) RegistryContext.clientCache.get(SERVER_PORT_CACHE));
 
-	// private static final ObjectDecoder DECODER = new
-	// ObjectDecoder(1024*1024,ClassResolvers.weakCachingResolver());
-	// private static final ObjectEncoder ENCODER = new ObjectEncoder();
-
-	private static final StringDecoder DECODER = new StringDecoder();
-	private static final StringEncoder ENCODER = new StringEncoder();
-
-	private static final FileClientHandler CLIENT_HANDLER = new FileClientHandler();
+	// add  encoder/decoder for binary file
+	private final ObjectDecoder DECODER = new ObjectDecoder(1024 * 1024,
+			ClassResolvers.weakCachingResolver(this.getClass().getClassLoader()));
+	private final ObjectEncoder ENCODER = new ObjectEncoder();
+	private final FileClientHandler CLIENT_HANDLER = new FileClientHandler();
 
 	private final SslContext sslCtx;
 
@@ -45,16 +41,10 @@ public class FileClientInitializer extends ChannelInitializer<SocketChannel> {
 			pipeline.addLast(sslCtx.newHandler(ch.alloc(), ip, port));
 		}
 
-		// Add the text line codec combination first,
-		pipeline.addLast(new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
-		// pipeline.addLast(new
-		// ObjectDecoder(1024*1024,ClassResolvers.weakCachingResolver(this.getClass().getClassLoader())));
-		// pipeline.addLast(ENCODER);
-
 		pipeline.addLast(DECODER);
 		pipeline.addLast(ENCODER);
-
 		// and then business logic.
 		pipeline.addLast(CLIENT_HANDLER);
+
 	}
 }

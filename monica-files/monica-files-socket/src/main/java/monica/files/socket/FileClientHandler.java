@@ -12,11 +12,11 @@ import io.netty.channel.SimpleChannelInboundHandler;
  */
 
 @Sharable
-public class FileClientHandler extends SimpleChannelInboundHandler<String> {
+public class FileClientHandler extends SimpleChannelInboundHandler<Object> {
 
 	@Override
-	protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-		System.err.println(msg);
+	protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+        // no response temparorily
 	}
 
 	@Override
