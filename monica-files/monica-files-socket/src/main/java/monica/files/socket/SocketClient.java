@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.Properties;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -15,6 +16,7 @@ import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 import monica.framework.Client;
+import monica.framework.tools.Utils;
 import monica.framework.transport.TransportFile;
 
 /**
@@ -29,6 +31,10 @@ public class SocketClient implements Client {
 	static final boolean SSL = System.getProperty("ssl") != null;
 
 	public void start(String ip, int port) throws Exception {
+		Properties pps = new Properties();
+		File file = Utils.getPropertiesPath("path.properties");
+		pps.load(new FileInputStream(file));
+		String filePath = pps.getProperty("client.path");
 		// Configure SSL.
 		final SslContext sslCtx;
 		if (SSL) {
@@ -42,7 +48,7 @@ public class SocketClient implements Client {
 			Bootstrap b = new Bootstrap();
 			b.group(group).channel(NioSocketChannel.class).handler(new FileClientInitializer(sslCtx));
 			Channel ch = b.connect(ip, port).sync().channel();
-			File newFile = new File("f:\\019.mp3");
+			File newFile = new File(filePath+File.separator+"019.mp3");
 			FileChannel channel = (new FileInputStream(newFile)).getChannel();
 			ByteBuffer byteBuffer = ByteBuffer.allocate((int) channel.size());
 			while (channel.read(byteBuffer) > 0);

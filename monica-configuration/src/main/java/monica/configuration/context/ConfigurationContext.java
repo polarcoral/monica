@@ -1,6 +1,7 @@
 package monica.configuration.context;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -11,6 +12,7 @@ import org.yaml.snakeyaml.Yaml;
 import monica.configuration.entity.YamlClient;
 import monica.configuration.entity.YamlMonica;
 import monica.configuration.entity.YamlRouter;
+import monica.framework.tools.Utils;
 
 /**
  * {Threadsafe}
@@ -32,7 +34,9 @@ public class ConfigurationContext {
 	 */
 	public static void loadYamlServerConfig() throws FileNotFoundException, IOException{		
 		Yaml yaml = new Yaml();
-		YamlMonica yamlMonica = yaml.loadAs(getClassLoader().getResource(yamlBaseFilePath+File.separator+"monica.yaml").openStream(), YamlMonica.class);
+		File path = Utils.getPropertiesPath("yaml\\monica.yaml");
+		YamlMonica yamlMonica = yaml.loadAs(new FileInputStream(path), YamlMonica.class);		
+		//YamlMonica yamlMonica = yaml.loadAs(getClassLoader().getResource(yamlBaseFilePath+File.separator+"monica.yaml").openStream(), YamlMonica.class);
 		propMap.putIfAbsent("yamlMonica", yamlMonica);
 		propMap.putIfAbsent("serverString", yamlMonica.toServerString());
 		propMap.putIfAbsent("storage", yamlMonica.getStorage());
@@ -41,14 +45,18 @@ public class ConfigurationContext {
 	
 	public static void loadYamlClientConfig() throws FileNotFoundException, IOException{
 		Yaml yaml = new Yaml();
-		YamlClient yamlClient = yaml.loadAs(getClassLoader().getResource(yamlBaseFilePath+File.separator+"client.yaml").openStream(), YamlClient.class);
+		File path = Utils.getPropertiesPath("yaml\\client.yaml");
+		YamlClient yamlClient = yaml.loadAs(new FileInputStream(path), YamlClient.class);		
+	//	YamlClient yamlClient = yaml.loadAs(getClassLoader().getResource(yamlBaseFilePath+File.separator+"client.yaml").openStream(), YamlClient.class);
 		propMap.putIfAbsent("client", yamlClient);
 		propMap.putIfAbsent("serverString", yamlClient.toServerString());
 	}
 	
 	public static List<String> loadYamlRouterConfig() throws FileNotFoundException, IOException{
 		Yaml yaml = new Yaml();
-		YamlRouter yamlRouter = yaml.loadAs(getClassLoader().getResource(yamlBaseFilePath+File.separator+"router.yaml").openStream(), YamlRouter.class);
+		File path = Utils.getPropertiesPath("yaml\\router.yaml");
+		YamlRouter yamlRouter = yaml.loadAs(new FileInputStream(path), YamlRouter.class);	
+	//	YamlRouter yamlRouter = yaml.loadAs(getClassLoader().getResource(yamlBaseFilePath+File.separator+"router.yaml").openStream(), YamlRouter.class);
 		return yamlRouter.toStringList();
 	}
 	

@@ -40,6 +40,11 @@
          <groupId>org.apache.curator</groupId>
          <artifactId>curator-framework</artifactId>
      </dependency>
+      <dependency>
+         <groupId>com.polarcoral.monica</groupId>
+         <artifactId>monica-framework</artifactId>
+         <version>${project.parent.version}</version>
+     </dependency>
   </dependencies>
   <description>Configuration based on properties and yaml for all artifacts of monica</description>
 </project>
