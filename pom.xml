@@ -28,7 +28,7 @@
 		<module>monica-starter</module>
 		<module>monica-coordinator</module>
 		<module>monica-storage</module>
-    <module>monica-storage-filesystem</module>
+    
   </modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
