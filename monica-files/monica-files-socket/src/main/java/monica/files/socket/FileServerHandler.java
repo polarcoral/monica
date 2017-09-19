@@ -23,6 +23,8 @@ import monica.configuration.context.ConfigurationContext;
 import monica.framework.Storage;
 import monica.framework.storage.AbstractStorageFactory;
 import monica.framework.transport.TransportFile;
+import io.netty.channel.ChannelHandler.Sharable;
+
 
 /**
  * 
@@ -30,6 +32,7 @@ import monica.framework.transport.TransportFile;
  *
  *         2017-08-29
  */
+@Sharable
 public class FileServerHandler extends SimpleChannelInboundHandler<Object> {
 	private String STORAGE_CONFIG_KEY = "storage";
   

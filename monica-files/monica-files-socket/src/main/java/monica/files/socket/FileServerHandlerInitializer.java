@@ -10,7 +10,6 @@ import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 
 public class FileServerHandlerInitializer  extends ChannelInitializer<SocketChannel>{
-	private final ObjectDecoder DECODER = new ObjectDecoder(4096*4096,ClassResolvers.weakCachingResolver(this.getClass().getClassLoader()));
 	private final ObjectEncoder ENCODER = new ObjectEncoder();
 	private final FileServerHandler SERVER_HANDLER = new FileServerHandler();
 	
@@ -21,7 +20,7 @@ public class FileServerHandlerInitializer  extends ChannelInitializer<SocketChan
 		ChannelPipeline pipeline = ch.pipeline();
 
 	
-		pipeline.addLast(DECODER);
+		pipeline.addLast(new ObjectDecoder(4096*4096,ClassResolvers.weakCachingResolver(this.getClass().getClassLoader())));
 		pipeline.addLast(ENCODER);	
 		
 		// and then business logic.
