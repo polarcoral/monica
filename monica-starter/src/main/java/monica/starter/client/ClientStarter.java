@@ -5,6 +5,7 @@ import java.util.concurrent.Executors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.netty.channel.Channel;
 import monica.configuration.context.ConfigurationContext;
 import monica.coordinator.impl.ServiceBuilder;
 import monica.framework.Client;
@@ -24,6 +25,7 @@ public class ClientStarter {
 	private final Logger log = LoggerFactory.getLogger(getClass());
 	private final String SERVER_IP_CACHE = "server_ip";
 	private final String SERVER_PORT_CACHE = "server_port";
+	private final String SOCKET_CHANNEL = "channel"; 
 
 	public void start() throws Exception {
 		ConfigurationContext.loadYamlClientConfig();
@@ -45,9 +47,14 @@ public class ClientStarter {
 
 	}
 
-	// register the client consumer
+	// register the  consumer
 	private UriSpec createUri() {
 		return new UriSpec();
+	}
+	
+	
+	public Channel getSocketChannel(){
+		return (Channel)ConfigurationContext.propMap.get(SOCKET_CHANNEL);
 	}
 
 	public static void main(String args[]) {
@@ -55,7 +62,6 @@ public class ClientStarter {
 		try {
 			container.start();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
