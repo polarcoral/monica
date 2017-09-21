@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package monica.examples.socket;
+package monica.examples;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,7 +36,7 @@ import monica.starter.client.ClientStarter;
  *
  *         2017-08-29
  */
-public class SocketClientTest {
+public class MonicaClient {
 
 	public static void main(String args[]) throws FileNotFoundException, IOException {
 		Properties pps = new Properties();

@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package monica.examples.socket;
+package monica.examples;
 
 import monica.starter.server.ServerStarter;
 
@@ -23,7 +23,7 @@ import monica.starter.server.ServerStarter;
  *
  *         2017-08-29
  */
-public class SocketServerTest {
+public class MonicaServer {
 	public static void main(String args[]) {
 		ServerStarter container = new ServerStarter();
 		try {
