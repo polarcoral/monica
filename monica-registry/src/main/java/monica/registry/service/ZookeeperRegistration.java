@@ -33,7 +33,6 @@ public class ZookeeperRegistration implements Registration {
 					handleChildrenChange("", event.getPath());
 				}
 			};
-			System.out.println("url.toString-----------" + uri.toString());
 			String s = URLEncoder.encode(uri.toString(), "UTF-8");
 			if (null == client.checkExists().forPath("/" + type.toString())) {
 				client.create().forPath("/" + type.toString());
@@ -43,12 +42,11 @@ public class ZookeeperRegistration implements Registration {
 				client.create().withMode(CreateMode.EPHEMERAL).forPath("/SERVER/" + s);
 			}
 
-			List<String> batch = batchCreate();
-			for (String ss : batch) {
-				if (null == client.checkExists().forPath("/SERVER/" + ss)) {
-					client.create().forPath("/SERVER/" + ss);
-				}
-			}
+			/*
+			 * List<String> batch = batchCreate(); for (String ss : batch) { if
+			 * (null == client.checkExists().forPath("/SERVER/" + ss)) {
+			 * client.create().forPath("/SERVER/" + ss); } }
+			 */
 
 			client.getChildren().usingWatcher(new CuratorWatcher() {
 
