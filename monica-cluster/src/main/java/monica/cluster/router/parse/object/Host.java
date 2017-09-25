@@ -37,7 +37,6 @@ public class Host {
 			stringBuilder.append("!=");
 		}
 		for (String s : ips) {
-			System.out.println("host.object --------" + ips.indexOf(s) + "          " + ips.size());
 			if (ips.indexOf(s) != (ips.size() - 1)) {
 				stringBuilder.append(s + ",");
 			} else {

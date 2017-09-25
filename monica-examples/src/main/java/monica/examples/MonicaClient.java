@@ -74,7 +74,6 @@ public class MonicaClient {
 				TransportFile transportFile = new TransportFile();
 				transportFile.setContent(byteBuffer.array());
 				transportFile.setFileName(fileList[i].getName());
-				System.out.println("socketChannel is alive -------------" + ch.isActive());
 				ChannelFuture f = ch.writeAndFlush(transportFile);
 				// Wait until the connection is closed.
 				f.sync();

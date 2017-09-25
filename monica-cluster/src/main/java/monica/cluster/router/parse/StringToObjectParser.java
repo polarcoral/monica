@@ -20,7 +20,6 @@ public class StringToObjectParser {
 		String hostString = rule.trim().substring(rule.indexOf("['") + 2, index - 1).trim();
 		String[] hosts = hostString.split("=>");
 		Rule r = new Rule();
-		System.out.println("destination host --------  " + hostString.trim().indexOf("=>") + "     " + hosts[0]);
 		if (hostString.trim().indexOf("=>") == 0 && hosts.length > 0) {
 			r.setDestination(this.parseHostStringToHost(hosts[0]));
 		} else if (hostString.trim().indexOf("=>") == (hostString.trim().length() - 2) && hosts.length > 0) {
@@ -30,8 +29,7 @@ public class StringToObjectParser {
 			r.setSource(this.parseHostStringToHost(hosts[1]));
 		}
 
-		// System.out.println("destination host -------- "+hostString[1]);
-
+	
 		/*
 		 * List<Rule> rList = new ArrayList<Rule>(); rList.sort(new
 		 * Comparator<Rule>(){ public int compare(Rule o1, Rule o2) { return
