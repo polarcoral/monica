@@ -33,7 +33,6 @@ public class RandomLoadBalance implements LoadBalance {
 	}
 
 	public int doSelect(List<?> temp_providers) {
-		System.out.println("temp_providers.size() " + temp_providers.size());
 		int index = getIndex(temp_providers.size());
 		return index;
 	}

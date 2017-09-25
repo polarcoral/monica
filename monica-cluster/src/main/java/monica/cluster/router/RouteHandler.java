@@ -41,7 +41,6 @@ public class RouteHandler {
 				for (String rule : childList) {
 					StringToObjectParser stringParser = new StringToObjectParser();
 					rulesList.add(stringParser.parseRuleStringToRule(URLDecoder.decode(rule, "UTF-8")));
-					System.out.println("rule---------    " + URLDecoder.decode(rule, "UTF-8"));
 				}
 			}
 			filterRulesForConsumer();
