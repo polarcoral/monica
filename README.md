@@ -2,7 +2,7 @@
 Monica is a distributed file transport system. It provides the following features:
 *   Load balancing
 *   Routing according to IP 
-*   Registration and Discovery
+*   Service registration and Discovery
 
   To get monica binaries, go to [maven centre](http://search.maven.org/#search%7Cga%7C1%7Cmonica). Here is an example to add dependency in Maven:
   
@@ -12,15 +12,15 @@ Monica is a distributed file transport system. It provides the following feature
         <version>0.0.2-alpha</version>
       </dependency>
 ## Modules
-*  monica-framework
-*  monica-configuration
-*  monica-registry
-*  monica-cluster
-*  monica-coordinator
-*  monica-files
-*  monica-starter
-*  monica-storage
-*  monica-examples
+*  monica-framework:APIS for SPI
+*  monica-configuration:Server and client configuration APIs
+*  monica-registry:Service registration and discovery
+*  monica-cluster:Argorithms of loadbalancer and router
+*  monica-coordinator:Coordinating the behaviours across modules
+*  monica-files:  Protocolsets for the file transporting
+*  monica-starter:Starting monica server and client quickly
+*  monica-storage:Storage APIS of local disk or cloud
+*  monica-examples:Examples
 ## Documentation
    [Monica wiki](https://github.com/polarcoral/monica/wiki/Getting-started)
 ## License
