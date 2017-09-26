@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.polarcoral.monica</groupId>
     <artifactId>monica-storage</artifactId>
-    <version>0.0.1-alpha</version>
+    <version>0.0.2-alpha</version>
   </parent>  <artifactId>monica-storage-filesystem</artifactId>
   <name>monica-storage-filesystem</name>
   <dependencies>

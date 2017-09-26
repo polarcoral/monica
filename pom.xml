@@ -245,7 +245,7 @@
 				<version>${coveralls-maven-plugin.version}</version>
 			</plugin>
 
-			<!-- 
+			<!--  
 			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
