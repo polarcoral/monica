@@ -1,8 +1,9 @@
 # Monica
 Monica is a distributed file transport system. It provides the following features:
-*   Load balancing  
-*   Routing according to IP   
-*   Service registration and Discovery  
+*  Load balancing  
+*  Routing according to IP   
+*  Service registration and Discovery  
+*  Monica can scale to a large number of concurrent users with distributed design based on a high performance asynchronous IO library
 
   To get monica binaries, go to [maven centre](http://search.maven.org/#search%7Cga%7C1%7Cmonica). Here is an example to add dependency in Maven:
   
