@@ -8,8 +8,8 @@ Monica is a distributed file transport system. It provides the following feature
   
       <dependency>
         <groupId>com.polarcoral.monica</groupId>
-        <artifactId>monica-example</artifactId>
-        <version>0.0.1-alpha</version>
+        <artifactId>monica-framewor</artifactId>
+        <version>0.0.2-alpha</version>
       </dependency>
 ## Modules
 *  monica-framework
@@ -19,6 +19,7 @@ Monica is a distributed file transport system. It provides the following feature
 *  monica-coordinator
 *  monica-files
 *  monica-starter
+*  monica-storage
 *  monica-examples
 ## Documentation
    [Monica wiki](https://github.com/polarcoral/monica/wiki/Getting-started)
