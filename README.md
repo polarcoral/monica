@@ -40,4 +40,4 @@ Monica is a distributed file transport system. It provides the following feature
   under the License.
   
 ## Questions
-   Email lucy@polarcoral.com
+   Email: lucy@polarcoral.com
