@@ -16,7 +16,7 @@ Monica is a distributed file transport system. It provides the following feature
 *  monica-framework:    APIs for SPI
 *  monica-configuration:    Server and client configuration APIs
 *  monica-registry:    Service registration and discovery
-*  monica-cluster:    Argorithms of loadbalancer and router
+*  monica-cluster:    Algorithms of loadbalancer and router
 *  monica-coordinator:    Coordinating the behaviours across modules
 *  monica-files:    Protocolset for the file transporting
 *  monica-starter:    Starting monica server and client quickly
