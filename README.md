@@ -20,7 +20,7 @@ Monica is a distributed file transport system. It provides the following feature
 *  monica-coordinator:    Coordinating the behaviours across modules
 *  monica-files:    Protocolset for the file transporting
 *  monica-starter:    Starting monica server and client quickly
-*  monica-storage:    Storage APIS of local disk or cloud
+*  monica-storage:    Storage APIs of local disk or cloud
 *  monica-examples:    Examples
 ## Documentation
    [Monica wiki](https://github.com/polarcoral/monica/wiki/Getting-started)
