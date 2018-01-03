@@ -10,7 +10,7 @@ Monica is a distributed file transport system. It provides the following feature
       <dependency>
         <groupId>com.polarcoral.monica</groupId>
         <artifactId>monica-framework</artifactId>
-        <version>0.0.2-alpha</version>
+        <version>0.0.3.ALPHA</version>
       </dependency>
 ## Modules
 *  monica-framework:    APIs for SPI
