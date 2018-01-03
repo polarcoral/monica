@@ -3,7 +3,7 @@
   <parent>
     <groupId>com.polarcoral.monica</groupId>
     <artifactId>monica</artifactId>
-    <version>0.0.2-alpha</version>
+    <version>0.0.3.ALPHA</version>
   </parent>
   <artifactId>monica-storage</artifactId>
   <packaging>pom</packaging>
