@@ -2,5 +2,5 @@ protocol: socket
 configCentral: zookeeper
 registry: zookeeper
 servers:
-        - !!monica.configuration.entity.YamlRegistryServer [127.0.0.1,2181]
+        - !!monica.configuration.entity.YamlRegistryServer [192.168.1.101,2181]
 storage: monica.storage.filesystem.DiskStorageFactory

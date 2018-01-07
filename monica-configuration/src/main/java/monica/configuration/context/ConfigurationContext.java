@@ -55,8 +55,8 @@ public class ConfigurationContext {
 	public static List<String> loadYamlRouterConfig() throws FileNotFoundException, IOException{
 		Yaml yaml = new Yaml();
 		File path = Utils.getPropertiesPath("\\yaml\\router.yaml");
-		YamlRouter yamlRouter = yaml.loadAs(new FileInputStream(path), YamlRouter.class);	
-	//	YamlRouter yamlRouter = yaml.loadAs(getClassLoader().getResource(yamlBaseFilePath+File.separator+"router.yaml").openStream(), YamlRouter.class);
+		//YamlRouter yamlRouter = yaml.loadAs(new FileInputStream(path), YamlRouter.class);	
+		YamlRouter yamlRouter = yaml.loadAs(Utils.loadResources("yaml/router.yaml").openStream(), YamlRouter.class);
 		return yamlRouter.toStringList();
 	}
 	
