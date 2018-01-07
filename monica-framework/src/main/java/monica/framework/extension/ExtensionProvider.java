@@ -27,7 +27,7 @@ public class ExtensionProvider {
 	}
 
 	private static String loadFile(String fileName, String key) {
-		URL url = getClassLoader().getResource(basePath + File.separator + fileName);
+		URL url = getClassLoader().getResource(basePath + "/" + fileName);
 		if (null != url) {
 			try {
 				BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), "utf-8"));
@@ -58,6 +58,6 @@ public class ExtensionProvider {
 
 	public static void main(String args[]) {
 		ExtensionProvider provider = new ExtensionProvider();
-		// provider.getDefaultExtension(null);
+		//provider.getDefaultExtension(ConfigService.class);
 	}
 }
