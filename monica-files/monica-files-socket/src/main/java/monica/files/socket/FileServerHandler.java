@@ -16,6 +16,9 @@
 
 package monica.files.socket;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -35,20 +38,25 @@ import io.netty.channel.ChannelHandler.Sharable;
 @Sharable
 public class FileServerHandler extends SimpleChannelInboundHandler<Object> {
 	private String STORAGE_CONFIG_KEY = "storage";
-  
+    private final int poolSize=20;
 
 	@Override
 	public void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+		  ExecutorService storageService = Executors.newFixedThreadPool(poolSize);	 		
 		  String storageFactoryName = String.valueOf(ConfigurationContext.propMap.get(STORAGE_CONFIG_KEY));		   
 		  Object o = this.getClass().getClassLoader().loadClass(storageFactoryName).newInstance();
-		  Storage storage = ((AbstractStorageFactory)o).newStorageInstance();
-		  storage.storage((TransportFile)msg);
+		  Storage storage = ((AbstractStorageFactory)o).newStorageInstance();		
+		  storageService.execute(new Runnable(){
+				@Override
+				public void run() {
+					storage.storage((TransportFile)msg);				
+				}				  
+			  });		  
 	}
 
 	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
 		cause.printStackTrace();
-
 		if (ctx.channel().isActive()) {
 			ctx.writeAndFlush("ERR: " + cause.getClass().getSimpleName() + ": " + cause.getMessage() + '\n')
 					.addListener(ChannelFutureListener.CLOSE);
