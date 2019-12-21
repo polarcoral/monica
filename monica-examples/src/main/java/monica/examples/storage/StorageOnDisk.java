@@ -11,6 +11,7 @@ import monica.framework.Storage;
 import monica.framework.transport.TransportFile;
 
 public class StorageOnDisk implements Storage {
+	
 
 	@Override
 	public void storage(TransportFile receivedFile) {

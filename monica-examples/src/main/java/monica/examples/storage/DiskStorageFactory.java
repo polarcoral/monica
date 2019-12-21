@@ -13,5 +13,4 @@ public class DiskStorageFactory extends AbstractStorageFactory{
 		}
 		return diskStorage;
 	}
-
 }
