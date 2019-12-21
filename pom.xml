@@ -27,7 +27,6 @@
 		<module>monica-examples</module>
 		<module>monica-starter</module>
 		<module>monica-coordinator</module>
-		<module>monica-storage</module>
     
   </modules>
 	<properties>
