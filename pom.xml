@@ -35,7 +35,7 @@
 		<junit.version>3.8.1</junit.version>
 		<netty.version>4.1.10.Final</netty.version>
 		<javassist.version>3.18.2-GA</javassist.version>
-		<snakeyaml.version>1.16</snakeyaml.version>
+		<snakeyaml.version>1.31</snakeyaml.version>
 		<druid.version>1.0.12</druid.version>
 		<h2.version>1.4.184</h2.version>
 		<curator.version>2.12.0</curator.version>
